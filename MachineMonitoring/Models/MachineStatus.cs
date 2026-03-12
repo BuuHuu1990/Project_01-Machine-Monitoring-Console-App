@@ -4,7 +4,11 @@ using System.Text;
 
 namespace MachineMonitoring.Models
 {
-    internal class MachineStatus
+    public enum MachineStatus
     {
+        Offline,
+        Running,
+        Stopped,
+        Error
     }
 }

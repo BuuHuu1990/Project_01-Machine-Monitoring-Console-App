@@ -4,7 +4,10 @@ using System.Text;
 
 namespace MachineMonitoring.Models
 {
-    internal class AlarmServerity
+    public enum AlarmSeverity
     {
+        Info,
+        Warning,
+        Critical
     }
 }
