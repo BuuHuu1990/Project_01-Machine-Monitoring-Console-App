@@ -6,19 +6,37 @@ namespace MachineMonitoring.Models
 {
     public class Machine
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public MachineStatus Status { get; set; }
-        public List<Alarm> Alarms { get; set; }
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public MachineStatus Status { get; private set; } = MachineStatus.Offline;
+        public List<Alarm> Alarms { get; private set; } = new();
 
-        public void MachineStart()
+        public void Start()
         {
-
+            Status = MachineStatus.Running;
         }
 
-        public void MachineStop() { }
-        public void MachineError(string message) { }
-        public void AddAlarm(Alarm alarm) { }
+        public void Stop()
+        {
+            Status = MachineStatus.Stopped;
+        }
+
+        public void Error()
+        {
+            Status = MachineStatus.Error;
+        }
+
+        public void AddAlarm(string message, AlarmSeverity severity)
+        {
+            Alarm alarm = new(message, severity);
+            Alarms.Add(alarm);
+        }
+
+        public Machine(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
 
     }
 }

@@ -12,6 +12,7 @@ namespace MachineMonitoring.Models
 
         public Alarm(string message, AlarmSeverity severity)
         {
+            Timestamp = DateTime.Now;
             Message = message;
             AlarmSeverity = severity;
         }
